@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 90 20% 96%;
+    --foreground: 210 20% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 210 20% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 20% 15%;
+
+    --primary: 120 55% 38%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 90 15% 90%;
+    --secondary-foreground: 210 20% 15%;
+
+    --muted: 90 10% 88%;
+    --muted-foreground: 210 10% 45%;
+
+    --accent: 35 90% 55%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 90 10% 82%;
+    --input: 90 10% 82%;
+    --ring: 120 55% 38%;
+
+    --radius: 0.5rem;
+
+    --status-green: 120 60% 45%;
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 210 20% 15%;
+    --sidebar-primary: 120 55% 38%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 90 15% 90%;
+    --sidebar-accent-foreground: 210 20% 15%;
+    --sidebar-border: 90 10% 82%;
+    --sidebar-ring: 120 55% 38%;
+
+    --mc-dirt: 30 30% 28%;
+    --mc-grass: 100 50% 35%;
+    --mc-stone: 210 5% 55%;
+    --mc-gold: 43 90% 55%;
+    --mc-diamond: 185 70% 55%;
+    --mc-emerald: 140 65% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Space Mono', monospace;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Mono', monospace;
+    text-wrap: balance;
+  }
+}
+
+@layer components {
+  .glass-nav {
+    background: hsla(90, 20%, 96%, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 3px solid hsl(var(--mc-grass));
+  }
+
+  .hero-glow {
+    background:
+      linear-gradient(180deg, hsl(120 55% 38% / 0.06) 0%, transparent 60%),
+      url("data:image/svg+xml,%3Csvg width='64' height='64' viewBox='0 0 64 64' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='32' height='32' fill='%2390c590' fill-opacity='0.07'/%3E%3Crect x='32' y='32' width='32' height='32' fill='%2390c590' fill-opacity='0.07'/%3E%3C/svg%3E");
+  }
+
+  .card-surface {
+    @apply bg-card border-2 border-border rounded-lg;
+    box-shadow: 4px 4px 0px hsl(var(--border));
+    transition: all 0.2s ease;
+  }
+
+  .card-surface:hover {
+    transform: translateY(-4px);
+    border-color: hsl(var(--primary));
+    box-shadow: 6px 6px 0px hsl(var(--primary) / 0.3);
+  }
+
+  .tab-active {
+    @apply bg-primary text-primary-foreground;
+  }
+
+  .tab-inactive {
+    @apply text-muted-foreground hover:text-foreground hover:bg-secondary;
+  }
+
+  .mc-pixel-border {
+    border: 3px solid hsl(var(--mc-dirt));
+    box-shadow: inset 0 0 0 2px hsl(var(--mc-grass)), 4px 4px 0 hsl(var(--mc-dirt) / 0.3);
+  }
+
+  .mc-btn {
+    @apply font-bold uppercase tracking-wider;
+    background: linear-gradient(180deg, hsl(var(--primary)), hsl(120 45% 30%));
+    border: 3px solid hsl(120 40% 25%);
+    box-shadow: inset 0 2px 0 hsl(120 55% 50%), inset 0 -2px 0 hsl(120 40% 25%), 3px 3px 0 hsl(0 0% 0% / 0.15);
+    text-shadow: 1px 1px 0 hsl(0 0% 0% / 0.3);
+  }
+
+  .mc-btn:hover {
+    filter: brightness(1.1);
+  }
+
+  .mc-btn:active {
+    box-shadow: inset 0 2px 0 hsl(120 40% 25%), inset 0 -2px 0 hsl(120 55% 50%), 1px 1px 0 hsl(0 0% 0% / 0.15);
+    transform: translateY(2px);
+  }
+}
